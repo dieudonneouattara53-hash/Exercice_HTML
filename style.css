@@ -1,213 +1,664 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-*{
-    font-family: "Montserrat" ,'Times New Roman', Times, sans-serif;
-}
-html{
-    scroll-behavior: smooth;
-}
-body{
-    margin: 0 auto;
+/* ==========================================================================
+   NatureEmoi - Modern Responsive Stylesheet
+   ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+    --primary-color: #ADD981;
+    --primary-dark: #7fa855;
+    --primary-light: #d6efbe;
+    --text-color: #262c23;
+    --text-muted: #5f6b5b;
+    --text-light: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.92);
+    --bg-page: #f8faf7;
+    --font-title: 'Abril Fatface', 'Times New Roman', Times, serif;
+    --font-body: 'Montserrat', system-ui, -apple-system, sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 35px -10px rgba(0, 0, 0, 0.18);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
 }
-/* L'entete de la page */
-.section_accueil{
-    background: url('images/bg.jpg');
-    height: 90vh;
-    background-size: cover ;
+
+/* Global Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-color);
+    background-color: var(--bg-page);
+    line-height: 1.6;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ==========================================================================
+   En-tête & Section Accueil (Hero)
+   ========================================================================== */
+
+.section_accueil {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.5) 100%), url('images/bg.jpg');
+    background-size: cover;
     background-position: center;
-    padding: 25px;
+    min-height: 90vh;
+    padding: clamp(16px, 3.5vw, 35px) clamp(20px, 5vw, 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
 }
-header.header img{
-    width: 150px;
+
+/* Header */
+header.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 100;
 }
-header.header{
+
+.logo_link {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.logo_link:hover {
+    transform: scale(1.03);
+}
+
+header.header .logo {
+    width: clamp(120px, 15vw, 160px);
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+/* Navigation Desktop */
+nav.nav {
     display: flex;
     align-items: center;
 }
-/* Bar de navigation  */
-nav.nav{
+
+.nav_list {
     display: flex;
-    width: 400px;
-    justify-content: space-between;
-    margin: 20px;
-}
-header nav a{
-    text-decoration: none;
-}
-nav.nav li{
+    align-items: center;
+    gap: clamp(1.2rem, 3vw, 2.5rem);
     list-style: none;
-    color: white;
 }
-/* Landing page */
-.title{
-    color: white;
-    margin-left: 20px;
-    font-family: "Abril FatFace",cursive;
-    font-size: 80px;
-    font-weight: 100;
-}
-.landing_page{
-    padding: 20px 50px;
-}
-.landing_page a {
+
+.nav_link {
     text-decoration: none;
-    color: rgb(195, 187, 187);
-    position: absolute;
-    bottom: 60px;
-}
-/* Service */
-.service{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 30px;
+    color: var(--text-light);
+    font-weight: 500;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    padding: 6px 4px;
     position: relative;
+    transition: var(--transition);
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    display: inline-block;
 }
-.icon{
-    font-size: 30px;
-    color: #ADD981;
+
+.nav_link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: var(--transition);
 }
-.para{
+
+.nav_link:hover {
+    color: var(--primary-light);
+}
+
+.nav_link:hover::after {
+    width: 100%;
+}
+
+/* Mobile Hamburger Toggle */
+.nav_toggle {
+    display: none;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+    z-index: 120;
+}
+
+.nav_toggle:hover {
+    background: rgba(0, 0, 0, 0.65);
+    border-color: var(--primary-color);
+}
+
+.hamburger_bar {
+    width: 22px;
+    height: 2.5px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.nav_toggle.active .hamburger_bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+
+.nav_toggle.active .hamburger_bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.nav_toggle.active .hamburger_bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Landing page / Hero Content */
+.landing_page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
+    padding: clamp(40px, 8vh, 100px) 0 clamp(20px, 4vh, 40px);
+}
+
+.title {
+    color: #ffffff;
+    font-family: var(--font-title);
+    font-size: clamp(2.2rem, 6vw, 4.8rem);
+    line-height: 1.15;
+    font-weight: 400;
+    max-width: 850px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2.5rem;
+}
+
+.scroll_link {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
     font-weight: 600;
-    width: 200px;
-    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    transition: var(--transition);
+    animation: scrollBounce 2.4s infinite ease-in-out;
 }
-.detail{
+
+.scroll_link:hover {
+    color: #ffffff;
+    background: rgba(173, 217, 129, 0.4);
+    border-color: var(--primary-color);
+    transform: translateY(4px);
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+/*Section Services*/
+
+.service {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    max-width: 1240px;
+    margin: clamp(35px, 6vw, 65px) auto;
+    padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.detail {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    padding: clamp(24px, 3.5vw, 32px) 20px;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
 }
 
-/* section ventes */
-.best_sell{
-    margin: 20px;
+.detail:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(173, 217, 129, 0.5);
 }
-.section_title{
+
+.icon {
+    font-size: clamp(2.2rem, 3.5vw, 2.8rem);
+    color: var(--primary-color);
+    margin-bottom: 16px;
+    transition: var(--transition);
+}
+
+.detail:hover .icon {
+    transform: scale(1.12);
+    color: var(--primary-dark);
+}
+
+.para {
+    font-weight: 600;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    color: var(--text-color);
+    max-width: 230px;
+    line-height: 1.4;
+}
+
+/* Titres de section génériques*/
+
+.section_title {
     position: relative;
-    font-size: 50px;
-    font-weight: 100;
-    font-family: 'Abril FatFace','Times New Roman', Times, serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-family: var(--font-title);
+    font-weight: 400;
+    color: var(--text-color);
+    margin-bottom: clamp(25px, 4vw, 40px);
+    display: inline-block;
+    padding-bottom: 12px;
 }
-.section_title::before{
+
+.section_title::before {
     content: "";
-    width: 50px;
-    height: 7px;
-    background-color: #ADD981;
+    width: 60px;
+    height: 6px;
+    background-color: var(--primary-color);
     position: absolute;
     bottom: 0;
+    left: 0;
+    border-radius: 3px;
 }
-.best_plant{
-    display: flex;
-    min-height: 500px;
-    flex-wrap: wrap;
-    justify-content: center;
 
+/* Composant Cartes Plante (Plant Box) */
 
-}
-.plant_box{
+.plant_box {
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    display: block;
+    text-decoration: none;
+    transition: var(--transition);
+}
 
+.plant_box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
 }
-.notgrid{
-    flex: 1;
-    min-width: 200px;
 
-}
-.plant1{
-    background-image: url(images/nos_meilleures_ventes/1.jpg);
-}
-.plant2{
-    background-image: url(images/nos_meilleures_ventes/2.jpg);
-    
-}.plant3{
-    background-image: url(images/nos_meilleures_ventes/3.jpg);
-    
-}.plant4{
-    background-image: url(images/nos_meilleures_ventes/4.jpg);
-    
-}
-/* Plants detail */
-.plant_detail{
+/* Détails des plantes */
+.plant_detail {
     position: absolute;
-    background-color: #FFFFFFDF;
     bottom: 0;
-    padding: 2px 2px;
-    width: 100%;
-    
+    left: 0;
+    right: 0;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    z-index: 2;
 }
-.plant_name{
-    font-size: 22px;
-    font-weight: 500;
-    line-height: 3px;   
+
+.plant_box:hover .plant_detail {
+    background: rgba(255, 255, 255, 0.98);
 }
-.plant_price{
-    color: #ADD981;
+
+.plant_name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.3;
+}
+
+.plant_price {
+    color: var(--primary-dark);
     font-weight: 800;
-    line-height: 3px;
-    font-size: 14px;
+    font-size: 1rem;
+    line-height: 1.2;
 }
-/* Nos plants */
-.all_plant{
-    margin: 100px;
 
+/* Section Meilleures Ventes */
+
+.best_sell {
+    max-width: 1280px;
+    margin: clamp(40px, 6vw, 80px) auto;
+    padding: 0 clamp(20px, 4vw, 40px);
 }
-.plant_grid{
+
+.best_plant {
     display: grid;
-    min-height: 150vb;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(4,1fr);
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2.2vw, 26px);
 }
 
-.plant_grid1{
-    background-image: url(/images/nos_plantes/1.jpg);
-    grid-column: 1/3;
-    grid-row: 1/3;
-    margin: 4px;
+.best_plant .plant_box {
+    min-height: 380px;
+    height: 380px;
 }
-.plant_grid2{
-    background-image: url(/images/nos_plantes/2.jpg);
-    grid-column: 3/5;
-    margin: 4px;
-}
-.plant_grid3{
-    background-image: url(/images/nos_plantes/3.jpg);
-    grid-column: 3/5;
-    margin: 4px;
 
+.plant1 { background-image: url('images/nos_meilleures_ventes/1.jpg'); }
+.plant2 { background-image: url('images/nos_meilleures_ventes/2.jpg'); }
+.plant3 { background-image: url('images/nos_meilleures_ventes/3.jpg'); }
+.plant4 { background-image: url('images/nos_meilleures_ventes/4.jpg'); }
+
+/* ==========================================================================
+   Section Nos Plantes (Grille Mosaïque Parfaitement Alignée)
+   ========================================================================== */
+
+.all_plant {
+    max-width: 1280px;
+    margin: clamp(40px, 6vw, 80px) auto;
+    padding: 0 clamp(20px, 4vw, 40px);
 }
-.plant_grid4{
-    background-image: url(/images/nos_plantes/4.jpg);
-    grid-column: 1;
-    grid-row: 3/5;
-    margin: 4px;
+
+.plant_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 250px 250px 250px 250px;
+    gap: 20px;
+    width: 100%;
 }
-.plant_grid5{
-    background-image: url(/images/nos_plantes/5.jpg);
-    grid-column: 2/4;
-    grid-row:3/5;
-    margin: 4px;
+
+.plant_grid .plant_box {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
 }
-.plant_grid6{
-    background-image: url(/images/nos_plantes/6.jpg);
-    grid-column: 4;
-    grid-row: 3/5;
-    margin: 4px;
+
+/* Desktop layout (4 colonnes, 2 blocs réguliers de 500px) */
+.plant_grid1 {
+    background-image: url('images/nos_plantes/1.jpg');
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
 }
-/* Footer (pied de page) */
-footer{
+
+.plant_grid2 {
+    background-image: url('images/nos_plantes/2.jpg');
+    grid-column: 3 / 5;
+    grid-row: 1 / 2;
+}
+
+.plant_grid3 {
+    background-image: url('images/nos_plantes/3.jpg');
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+}
+
+.plant_grid4 {
+    background-image: url('images/nos_plantes/4.jpg');
+    grid-column: 1 / 2;
+    grid-row: 3 / 5;
+}
+
+.plant_grid5 {
+    background-image: url('images/nos_plantes/5.jpg');
+    grid-column: 2 / 4;
+    grid-row: 3 / 5;
+}
+
+.plant_grid6 {
+    background-image: url('images/nos_plantes/6.jpg');
+    grid-column: 4 / 5;
+    grid-row: 3 / 5;
+}
+
+/* ==========================================================================
+   Pied de page (Footer)
+   ========================================================================== */
+
+footer#footer {
     display: flex;
     align-items: center;
-    margin: 5px 10px;
     justify-content: space-between;
+    padding: 30px clamp(20px, 4vw, 50px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background-color: #ffffff;
+    margin-top: clamp(40px, 6vw, 70px);
+    gap: 1.5rem;
+    flex-wrap: wrap;
 }
-.copyright{
-    font-family: 'Abril FatFace',cursive,sans-serif;
-    font-weight: 100;
+
+.copyright {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 500;
 }
-.cgv{
+
+.cgv {
     text-decoration: none;
-    color: black;
-    font-family: 'Abril FatFace',cursive,sans-serif;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    transition: var(--transition);
+}
+
+.cgv::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.cgv:hover {
+    color: var(--primary-dark);
+}
+
+.cgv:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (Breakpoints Responsives)
+   ========================================================================== */
+
+/* Écrans Moyens & Tablettes Paysage (<= 1024px) */
+@media screen and (max-width: 1024px) {
+    .best_plant {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .best_plant .plant_box {
+        min-height: 320px;
+        height: 320px;
+    }
+
+    .plant_grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        grid-auto-rows: 240px;
+        gap: 18px;
+    }
+
+    .plant_grid1 {
+        grid-column: 1 / 3;
+        grid-row: auto;
+    }
+
+    .plant_grid2 {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+
+    .plant_grid3 {
+        grid-column: 2 / 3;
+        grid-row: auto;
+    }
+
+    .plant_grid4 {
+        grid-column: 1 / 2;
+        grid-row: auto;
+    }
+
+    .plant_grid5 {
+        grid-column: 2 / 3;
+        grid-row: auto;
+    }
+
+    .plant_grid6 {
+        grid-column: 1 / 3;
+        grid-row: auto;
+    }
+}
+
+/* Tablettes Portrait & Smartphones (<= 768px) */
+@media screen and (max-width: 768px) {
+    .nav_toggle {
+        display: flex;
+    }
+
+    .nav {
+        position: absolute;
+        top: calc(100% + 15px);
+        right: 0;
+        left: 0;
+        background: rgba(22, 33, 22, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: var(--radius-md);
+        padding: 24px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-12px);
+        transition: var(--transition);
+    }
+
+    .nav.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .nav_list {
+        flex-direction: column;
+        gap: 1.2rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav_link {
+        font-size: 1.15rem;
+        display: block;
+        padding: 10px 15px;
+        border-radius: var(--radius-sm);
+    }
+
+    .nav_link:hover {
+        background: rgba(173, 217, 129, 0.15);
+    }
+
+    .section_accueil {
+        min-height: 80vh;
+    }
+
+    .service {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .best_plant {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
+    .best_plant .plant_box {
+        min-height: 280px;
+        height: 280px;
+    }
+}
+
+/* Petits Écrans Mobiles (<= 560px) */
+@media screen and (max-width: 560px) {
+    .section_accueil {
+        min-height: 75vh;
+    }
+
+    .best_plant {
+        grid-template-columns: 1fr;
+    }
+
+    .best_plant .plant_box {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .plant_grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-auto-rows: 250px;
+        gap: 16px;
+    }
+
+    .plant_grid1,
+    .plant_grid2,
+    .plant_grid3,
+    .plant_grid4,
+    .plant_grid5,
+    .plant_grid6 {
+        grid-column: 1 / -1 !important;
+        grid-row: auto !important;
+    }
+
+    footer#footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 24px 20px;
+    }
 }

@@ -3,121 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nature Emoi - Plantes d'exception & Décoration végétale</title>
+    <meta name="description" content="Nature Emoi : Découvrez notre sélection de magnifiques plantes d'intérieur et d'extérieur pour sublimer votre espace de vie.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <title>NatureEmoi</title>
 </head>
 <body>
    
     <section class="section_accueil">
         <header class="header">
-            <img class="logo" src="images/logo.png" alt="Logo du site">
-            <nav class="nav">
-                <a href="index.html"><li>Accueil</li></a>
-                <a href="#best"><li>Nos meilleurs vente</li></a>
-                <a href="#plant"><li>Nos plantes</li></a>
+            <a href="index.html" class="logo_link">
+                <img class="logo" src="images/logo.png" alt="Logo Nature Emoi">
+            </a>
+            <button class="nav_toggle" id="navToggle" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
+                <span class="hamburger_bar"></span>
+                <span class="hamburger_bar"></span>
+                <span class="hamburger_bar"></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <ul class="nav_list">
+                    <li><a href="index.html" class="nav_link">Accueil</a></li>
+                    <li><a href="#best" class="nav_link">Nos meilleures ventes</a></li>
+                    <li><a href="#plant" class="nav_link">Nos plantes</a></li>
+                </ul>
             </nav>
         </header>
+
         <div class="landing_page">
-            <h1 class="title">Nature Emoi , meilleur que le chocolat</h1>
-            <a href="#footer">Scroll <i class="fa-solid fa-angle-down"></i></a>
+            <h1 class="title">Nature Emoi, meilleur que le chocolat</h1>
+            <a href="#footer" class="scroll_link">Scroll <i class="fa-solid fa-angle-down"></i></a>
         </div>
-        
     </section>
+
     <section class="service">
         <div class="detail">
             <i class="fas fa-store icon"></i>
-            <p class="para">Nos magasin à votre service</p>
+            <p class="para">Nos magasins à votre service</p>
         </div>
         <div class="detail">
-            <i class="fas fa-people-carry icon"></i>
-            <p class="para">Retrait en magasin sans contacte</p>
+            <i class="fas fa-people-carry-box icon"></i>
+            <p class="para">Retrait en magasin sans contact</p>
         </div>
         <div class="detail">
             <i class="fas fa-truck icon"></i>
-            <p class="para">Livraison à domicile sans contacte</p>
+            <p class="para">Livraison à domicile sans contact</p>
         </div>
     </section>
+
     <section class="best_sell" id="best">
-        <h2 class="section_title">
-            Nos meilleurs ventes
-        </h2>
+        <h2 class="section_title">Nos meilleures ventes</h2>
         <div class="best_plant">
-            <a class="plant_box plant1 notgrid">
+            <a href="#plant" class="plant_box plant1 notgrid">
                 <div class="plant_detail">
-                    <p class="plant_name">Plant</p>
+                    <p class="plant_name">Monstera Deliciosa</p>
                     <p class="plant_price">24.99$</p>
                 </div>
-            </a>
-            <a class="plant_box plant2 notgrid">
+              </a>
+            <a href="#plant" class="plant_box plant2 notgrid">
                 <div class="plant_detail">
-                    <p class="plant_name">Plant</p>
+                    <p class="plant_name">Ficus Lyrata</p>
                     <p class="plant_price">14.99$</p>
                 </div>
-
             </a>
-            <a class="plant_box plant3 notgrid">
+            <a href="#plant" class="plant_box plant3 notgrid">
                 <div class="plant_detail">
-                    <p class="plant_name">Plant</p>
+                    <p class="plant_name">Calathea Orbifolia</p>
                     <p class="plant_price">24.99$</p>
                 </div>
             </a>
-            <a class="plant_box plant4 notgrid">
+            <a href="#plant" class="plant_box plant4 notgrid">
                 <div class="plant_detail">
-                    <p class="plant_name">Plant</p>
+                    <p class="plant_name">Pilea Peperomioides</p>
                     <p class="plant_price">24.99$</p>
                 </div>
             </a>
         </div>
     </section>
-<section class="all_plant" id="plant">
-    <h2 class="section_title">
-        Nos plants
-    </h2>
-    <div class="plant_grid">
-        <a class="plant_grid1 plant_box">
-            <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">17.99$</p>
-            </div>
-        </a>
-        <a class="plant_grid2 plant_box">
-             <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">17.99$</p>
-            </div>
-        </a>
-        <a class="plant_grid3 plant_box">
-             <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">44.99$</p>
-            </div>
-        </a>
-        <a class="plant_grid4 plant_box">
-             <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">17.99$</p>
-            </div>
-        </a>
-        <a class="plant_grid5 plant_box">
-             <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">39.99$</p>
-            </div>
-        </a>
-        <a class="plant_grid6 plant_box">
-             <div class="plant_detail">
-                <p class="plant_name">Plant</p>
-                <p class="plant_price">24.99$</p>
-            </div>
-        </a>
-    </div>
-</section>
-<footer id="footer">
-    <p class="copyright">&copy;2024-Nature Emoi</p>
-    <a href="" class="cgv">Condition generale de vente</a>
-</footer>
 
-    
+    <section class="all_plant" id="plant">
+        <h2 class="section_title">Nos plantes</h2>
+        <div class="plant_grid">
+            <a href="#plant" class="plant_grid1 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Sansevieria</p>
+                    <p class="plant_price">17.99$</p>
+                </div>
+            </a>
+            <a href="#plant" class="plant_grid2 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Strelitzia Nicolai</p>
+                    <p class="plant_price">17.99$</p>
+                </div>
+            </a>
+            <a href="#plant" class="plant_grid3 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Alocasia Zebrina</p>
+                    <p class="plant_price">44.99$</p>
+                </div>
+            </a>
+            <a href="#plant" class="plant_grid4 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Kentia Palm</p>
+                    <p class="plant_price">17.99$</p>
+                </div>
+            </a>
+            <a href="#plant" class="plant_grid5 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Dracaena Marginata</p>
+                    <p class="plant_price">39.99$</p>
+                </div>
+            </a>
+            <a href="#plant" class="plant_grid6 plant_box">
+                <div class="plant_detail">
+                    <p class="plant_name">Epipremnum Aureum</p>
+                    <p class="plant_price">24.99$</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <p class="copyright">&copy; 2024 - Nature Emoi. Tous droits réservés.</p>
+        <a href="#footer" class="cgv">Conditions Générales de Vente</a>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        const navLinks = document.querySelectorAll('.nav_link');
+
+        if (navToggle && mainNav) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = mainNav.classList.toggle('open');
+                navToggle.classList.toggle('active');
+                navToggle.setAttribute('aria-expanded', isOpen);
+                document.body.classList.toggle('menu-open', isOpen);
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mainNav.classList.remove('open');
+                    navToggle.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+
+            // Close menu if clicked outside
+            document.addEventListener('click', (e) => {
+                if (mainNav.classList.contains('open') && !mainNav.contains(e.target) && !navToggle.contains(e.target)) {
+                    mainNav.classList.remove('open');
+                    navToggle.classList.remove('active');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    document.body.classList.remove('menu-open');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
